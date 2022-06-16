@@ -1,0 +1,191 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "title": "COMMUNICATION",
+        "version": "2.0.0",
+        "description": "A sample API for test",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Swagger API Team",
+            "url": "http://swagger.io",
+            "email": "apiteam@swagger.io"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "servers": [],
+    "paths": {
+        "/communications": {
+            "get": {
+                "parameters": [
+                    {
+                        "style": "form",
+                        "name": "tags",
+                        "description": "tags to filter by",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "in": "query",
+                        "required": false
+                    },
+                    {
+                        "name": "limit",
+                        "description": "maximum number of results to return",
+                        "schema": {
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": "unexpected error"
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/communication"
+                                    }
+                                },
+                                "examples": {
+                                    "Communication": {
+                                        "value": [
+                                            {
+                                                "id": 1,
+                                                "expéditeur": "Updated2",
+                                                "destinataire": "Updated",
+                                                "message": "Updated"
+                                            },
+                                            {
+                                                "id": 2,
+                                                "expéditeur": "Kevin navarri",
+                                                "destinataire": "Youssef ",
+                                                "message": "Send me the document"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "communication response"
+                    }
+                },
+                "operationId": "findCommunication",
+                "description": "Returns all communications from the system that the user has access to\n"
+            },
+            "post": {
+                "requestBody": {
+                    "description": "Pet to add to the store",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/communication"
+                            },
+                            "examples": {
+                                "communication": {
+                                    "value": [
+                                        {
+                                            "id": 1,
+                                            "expéditeur": "Hiba Zouhid Updated",
+                                            "destinataire": "Jessica Vernier",
+                                            "message": "Send me the contract"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "default": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": "unexpected error"
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/communication"
+                                },
+                                "examples": {
+                                    "communication": {
+                                        "value": [
+                                            {
+                                                "id": "{{randomString(64)}}",
+                                                "expéditeur": "{{ request.body/expéditeur }}",
+                                                "destinataire": "{{randomFullName()}}",
+                                                "message": "Send me the contract"
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "description": "pet response"
+                    }
+                },
+                "operationId": "addCommunication",
+                "description": "Creates a new pet in the store.  Duplicates are allowed"
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Error": {
+                "required": [
+                    "code",
+                    "message"
+                ],
+                "properties": {
+                    "code": {
+                        "format": "int32",
+                        "type": "integer"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "communication": {
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "expéditeur": {
+                        "type": "string"
+                    },
+                    "destinataire": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
