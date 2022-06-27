@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.2",
     "info": {
-        "title": "COMMUNICATION",
+        "title": "COMMUNICATIONGIT",
         "version": "1.0.0",
         "description": "A sample API for test",
         "termsOfService": "http://swagger.io/terms/",
