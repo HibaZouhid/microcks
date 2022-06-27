@@ -172,7 +172,7 @@
             },
             "communication": {
                 "required": [
-                    "id"
+                    "idUp"
                 ],
                 "properties": {
                     "expéditeur": {
