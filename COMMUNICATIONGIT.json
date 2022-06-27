@@ -22,7 +22,7 @@
                 "parameters": [
                     {
                         "style": "form",
-                        "name": "tags",
+                        "name": "tagsUPDATED",
                         "description": "tags to filter by",
                         "schema": {
                             "type": "array",
@@ -172,7 +172,7 @@
             },
             "communication": {
                 "required": [
-                    "idUp"
+                    "id"
                 ],
                 "properties": {
                     "expéditeur": {
